@@ -10,7 +10,9 @@ const vm_main = new Vue({
     watch: {
         input(){
             this.input = this.input.slice(0,8);
-            this.result = parseInt(this.input,2);
+            this.input = this.input.replace(/[^0-1]/g,"");
+            this.input = this.input.replace("-","");
+            this.result = this.input.length > 0 ? parseInt(this.input,2) : 0;
         }
     },
 });
