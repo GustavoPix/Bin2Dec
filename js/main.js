@@ -2,36 +2,40 @@ const vm_main = new Vue({
     el:"#main",
     data:{
         input:"",
-        result:0,
-        bins:[]
+        result:"",
+        bins:[],
+        values:[]
     },
     methods: {
-        
+        lengthValue(i)
+        {
+            return this.values[i].length;
+        }
     },
     watch: {
         input(){
-            this.result = 0
+            this.result = " ";
             this.bins = []
             //this.input = this.input.slice(0,8);
             this.input = this.input.replace(" ","");
             this.input = this.input.replace(/[^0-1]/g,"");
             
 
-            let values = [];
-            values.push("");
+            this.values = [];
+            this.values.push("");
             for(let i = this.input.length - 1; i >= 0; i--)
             {
-                if(values[values.length - 1].length == 8)
+                if(this.values[this.values.length - 1].length == 8)
                 {
-                    values.push("");
+                    this.values.push("");
                 }
-                values[values.length - 1] = this.input[i] + values[values.length - 1];
+                this.values[this.values.length - 1] = this.input[i] + this.values[this.values.length - 1];
             }
             this.input = "";
-            values.reverse();
-            this.input = values.join(" ");
+            this.values.reverse();
+            this.input = this.values.join(" ");
 
-            values.forEach(value => {
+            this.values.forEach(value => {
                 if(value)
                 {
                     this.bins.push(parseInt(value,2));
@@ -39,5 +43,5 @@ const vm_main = new Vue({
                 }
             });
         }
-    },
+    }
 });

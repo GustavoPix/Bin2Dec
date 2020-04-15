@@ -4,16 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Dosis:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
 </head>
 <body>
-    <div id="main">
+    <div id="main" class="main">
+        <div class="logo">
+            <h1>Bin2Dec</h1>
+        </div>
         <input type="text" v-model="input">
         <ul>
-            <li v-for="bin in bins">{{bin}}</li>
+            <li 
+                v-if="bins.length > 0"
+                v-for="(bin,i) in bins"
+                :style="{width: lengthValue(i)*10 + 'px'}"
+            >
+                {{bin}}
+            </li>
+            <li v-if="bins.length == 0"></li>
         </ul>
-        <p>Result <span>{{result}}</span></p>
+        <p>{{result}}</p>
     </div>
+    <p class="credito"><a href="https://prismacode.com" target="_blank">Gustavo Lima de Carvalho - 2020</a></p>
     <script src="./js/main.js"></script>
 </body>
 </html>
