@@ -35,9 +35,14 @@ const vm_main = new Vue({
             this.values.reverse();
             this.input = this.values.join(" ");
 
+            let result = 0;
             this.values.forEach(value => {
                 if(value)
                 {
+                    if(this.result == " ")
+                    {
+                        this.result = 0;
+                    }
                     this.bins.push(parseInt(value,2));
                     this.result += parseInt(value,2);
                 }
