@@ -9,6 +9,9 @@
 <body>
     <div id="main">
         <input type="text" v-model="input">
+        <ul>
+            <li v-for="bin in bins">{{bin}}</li>
+        </ul>
         <p>Result <span>{{result}}</span></p>
     </div>
     <script src="./js/main.js"></script>
